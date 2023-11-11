@@ -414,7 +414,7 @@ namespace ASCOM.TriStarObservatoryTSOSM.SafetyMonitor
 
         private static void OnTimedEvent(object source, System.Timers.ElapsedEventArgs e)
         {
-            Console.WriteLine("Hello World!");
+            checkSafety();
         }
 
         private static bool CheckFile()
