@@ -26,6 +26,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 
+
 namespace ASCOM.TriStarObservatoryTSOSM.SafetyMonitor
 {
     //
@@ -54,7 +55,7 @@ namespace ASCOM.TriStarObservatoryTSOSM.SafetyMonitor
         internal static TraceLogger tl; // Local server's trace logger object for diagnostic log with information that you specify
 
         private static System.Timers.Timer SafetyTimer;
-        private static Weather wx;
+        private static LocalServer.Weather wx;
         private static int csFailCount;
 
         /// <summary>
@@ -440,7 +441,7 @@ namespace ASCOM.TriStarObservatoryTSOSM.SafetyMonitor
                 // wx = New Weather
                 var webclient = new Utils.WebClient();
                 string response = webclient.DownloadString(URL);
-                wx = JsonConvert.DeserializeObject<Weather>(response);
+                wx = JsonConvert.DeserializeObject<LocalServer.Weather>(response);
                 LogMessage("checkSafety", "Read JSON at " + DateTime.Now.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss") + " UTC");
                 LogMessage("checkSafety", "LastWrite at " + Convert.ToDateTime(wx.LastWrite).ToString("yyyy-MM-dd HH:mm:ss") + " UTC");
                 if (DateAndTime.DateDiff(DateInterval.Minute, Convert.ToDateTime(wx.LastWrite), DateTime.Now.ToUniversalTime()) > 5L)
@@ -538,11 +539,7 @@ namespace ASCOM.TriStarObservatoryTSOSM.SafetyMonitor
         #endregion
     }
 
-    internal class Weather
-    {
-        public string LastWrite { get; set; }
-        public int Alert { get; set; }
-    }
+
 }
 
 namespace Utils
