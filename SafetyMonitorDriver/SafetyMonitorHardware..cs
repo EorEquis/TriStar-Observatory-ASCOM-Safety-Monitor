@@ -393,7 +393,7 @@ namespace ASCOM.TriStarObservatoryTSOSM.SafetyMonitor
         {
             get
             {
-                if (wx.Alert == 0)
+                if (wx.Alert == 0 && IsConnected )
                 {
                     LogMessage("IsSafe Get", "True");
                     return true;
