@@ -287,7 +287,7 @@ namespace ASCOM.TriStarObservatoryTSOSM.SafetyMonitor
                     LogMessage("Connected Set", $"Connected");
 
                     connectedState = true;
-                    wx.checkSafety(URL);
+                    wx.checkSafety(URL, tl);
                     SafetyTimer.Enabled = true;
                 }
                 else
@@ -402,7 +402,7 @@ namespace ASCOM.TriStarObservatoryTSOSM.SafetyMonitor
 
         private static void OnTimedEvent(object source, System.Timers.ElapsedEventArgs e)
         {
-            wx.checkSafety(URL);
+            wx.checkSafety(URL, tl);
         }
 
 
