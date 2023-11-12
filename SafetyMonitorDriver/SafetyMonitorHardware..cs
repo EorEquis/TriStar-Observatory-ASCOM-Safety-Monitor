@@ -8,22 +8,10 @@
 // Author:		(GWB) Gordon Boulton <eeyore@stuffupthere.com>
 //
 
-using ASCOM;
-using ASCOM.Astrometry;
 using ASCOM.Astrometry.AstroUtils;
-using ASCOM.Astrometry.NOVAS;
-using ASCOM.DeviceInterface;
-using ASCOM.LocalServer;
 using ASCOM.Utilities;
-using Microsoft.VisualBasic;
-using Newtonsoft.Json;
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Globalization;
-using System.Runtime.InteropServices;
-using System.Text;
 using System.Windows.Forms;
 
 
@@ -56,7 +44,6 @@ namespace ASCOM.TriStarObservatoryTSOSM.SafetyMonitor
 
         private static System.Timers.Timer SafetyTimer;
         private static LocalServer.Weather wx;
-        private static int csFailCount;
 
         /// <summary>
         /// Initializes a new instance of the device Hardware class.
@@ -111,6 +98,7 @@ namespace ASCOM.TriStarObservatoryTSOSM.SafetyMonitor
                 SafetyTimer.Interval = 30000;
                 SafetyTimer.AutoReset = true;
                 SafetyTimer.Elapsed += new System.Timers.ElapsedEventHandler(OnTimedEvent);
+                wx = new LocalServer.Weather();
 
                 LogMessage("InitialiseHardware", "Completed basic initialisation");
 
@@ -299,7 +287,7 @@ namespace ASCOM.TriStarObservatoryTSOSM.SafetyMonitor
                     LogMessage("Connected Set", $"Connected");
 
                     connectedState = true;
-                    checkSafety();
+                    wx.checkSafety(URL);
                     SafetyTimer.Enabled = true;
                 }
                 else
@@ -335,7 +323,7 @@ namespace ASCOM.TriStarObservatoryTSOSM.SafetyMonitor
             {
                 Version version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
                 // TODO customise this driver description if required
-                string driverInfo = $"Driver Version: {version.Major}.{version.Minor}";
+                string driverInfo = $"{version.Major}.{version.Minor}.{version.Revision}.{version.Build}";
                 LogMessage("DriverInfo Get", driverInfo);
                 return driverInfo;
             }
@@ -349,7 +337,7 @@ namespace ASCOM.TriStarObservatoryTSOSM.SafetyMonitor
             get
             {
                 Version version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
-                string driverVersion = $"{version.Major}.{version.Minor}";
+                string driverVersion = $"{version.Major}.{version.Minor}.{version.Revision}.{version.Build}";
                 LogMessage("DriverVersion Get", driverVersion);
                 return driverVersion;
             }
@@ -414,55 +402,10 @@ namespace ASCOM.TriStarObservatoryTSOSM.SafetyMonitor
 
         private static void OnTimedEvent(object source, System.Timers.ElapsedEventArgs e)
         {
-            checkSafety();
+            wx.checkSafety(URL);
         }
 
-        private static bool CheckFile()
-        {
-            // So we kept this from the old data collector...but everything else handles connection issues within the Get function.
-            // TODO : Probably want to make this more consistent
-            var webclient = new Utils.WebClient();
-            string result = "";
-            try
-            {
-                result = webclient.DownloadString(URL);
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-        }
 
-        private static void checkSafety()
-        {
-            try
-            {
-                // wx = New Weather
-                var webclient = new Utils.WebClient();
-                string response = webclient.DownloadString(URL);
-                wx = JsonConvert.DeserializeObject<LocalServer.Weather>(response);
-                LogMessage("checkSafety", "Read JSON at " + DateTime.Now.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss") + " UTC");
-                LogMessage("checkSafety", "LastWrite at " + Convert.ToDateTime(wx.LastWrite).ToString("yyyy-MM-dd HH:mm:ss") + " UTC");
-                if (DateAndTime.DateDiff(DateInterval.Minute, Convert.ToDateTime(wx.LastWrite), DateTime.Now.ToUniversalTime()) > 5L)
-                {
-                    wx.Alert = 1;
-                    LogMessage("checkSafety ERROR", "Unsafe set, LastWrite too old!");
-                }
-                LogMessage("checkSafety", "Alert " + wx.Alert.ToString());
-                csFailCount = 0;
-            }
-            catch (Exception ex)
-            {
-                csFailCount = csFailCount + 1;
-                if (csFailCount > 1)
-                {
-                    wx.Alert = 1;
-                    LogMessage("checkSafety ERROR", ex.Message);
-                }
-                // Throw New DriverException("checkSafety failed.  Check log for details")
-            }
-        }
 
 
         /// <summary>

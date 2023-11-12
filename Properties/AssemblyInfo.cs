@@ -9,10 +9,10 @@ using System.Runtime.InteropServices;
 //
 // TODO - Add your authorship information here
 [assembly: AssemblyTitle("ASCOM.TriStarObservatoryTSOSM.SafetyMonitor")]
-[assembly: AssemblyDescription("ASCOM Local Server SafetyMonitor driver for TriStarObservatoryTSOSM")]
+[assembly: AssemblyDescription("TriStar Observatory SafetyMonitor V2")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("TriStar Observatory")]
-[assembly: AssemblyProduct("ASCOM Local Server SafetyMonitor driver for TriStarObservatoryTSOSM")]
+[assembly: AssemblyProduct("TriStar Observatory SafetyMonitor V2")]
 [assembly: AssemblyCopyright("Copyright © 2023 TriStar Observatory")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -31,6 +31,6 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 
-[assembly: AssemblyVersion("2.0.1.2")]
-[assembly: AssemblyFileVersion("2.0.1.2")]
+[assembly: AssemblyVersion("2.0.2.1")]
+[assembly: AssemblyFileVersion("2.0.2.1")]
 [assembly: NeutralResourcesLanguage("en")]

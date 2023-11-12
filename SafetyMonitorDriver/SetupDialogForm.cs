@@ -69,7 +69,7 @@ namespace ASCOM.TriStarObservatoryTSOSM.SafetyMonitor
         private void InitUI()
         {
             Version version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
-            string driverVersion = $"{version.Major}.{version.Minor}";
+            string driverVersion = $"{version.Major}.{version.Minor}.{version.Revision}.{version.Build}";
             labelVer.Text = driverVersion;
 
             // Set the trace checkbox
