@@ -1,4 +1,4 @@
-Conform Report Hash (V1): 19F699D5626E97FCC1B32DD47B69DA8F2AB79D69886BBC48E8F058D8F40FF77C75DD765A42C2D4FDAF5689B93E86FFA2BC1B3DECFF94B5EFE3023A600BF417C8
+Conform Report Hash (V1): B9F858CF5651F10BF48ACCB3587200CBDC16CDD6320F26A4F6DF298DCF204D60FA4864D19673FA17BB01343DD8F468C46B584117BDD1BD54142941CA92E05C9C
 
  
 ConformanceCheck ASCOM Device Conformance Checker Version 6.6.8048.17861, Build time: 1/13/2022 09:55:24
@@ -13,42 +13,42 @@ Error number for "Value Not Set 1" is: 80040402
 Error number for "Value Not Set 2" is: 80040403
 Error messages will not be interpreted to infer state.
  
-16:56:16.687 Driver Access Checks              OK       
-16:56:17.471 AccessChecks                      OK       Successfully created driver using late binding
-16:56:17.624 AccessChecks                      OK       Successfully connected using late binding
-16:56:17.630 AccessChecks                      INFO     The driver is a COM object
-16:56:18.300 AccessChecks                      OK       Successfully created driver using early binding to ISafetyMonitor interface
-16:56:18.308 AccessChecks                      OK       Successfully connected using early binding to ISafetyMonitor interface
-16:56:18.320 AccessChecks                      OK       Successfully created driver using driver access toolkit
-16:56:18.330 AccessChecks                      OK       Successfully connected using driver access toolkit
+11:13:40.894 Driver Access Checks              OK       
+11:13:41.699 AccessChecks                      OK       Successfully created driver using late binding
+11:13:41.854 AccessChecks                      OK       Successfully connected using late binding
+11:13:41.858 AccessChecks                      INFO     The driver is a COM object
+11:13:42.536 AccessChecks                      OK       Successfully created driver using early binding to ISafetyMonitor interface
+11:13:42.545 AccessChecks                      OK       Successfully connected using early binding to ISafetyMonitor interface
+11:13:42.557 AccessChecks                      OK       Successfully created driver using driver access toolkit
+11:13:42.570 AccessChecks                      OK       Successfully connected using driver access toolkit
  
 Conform is using ASCOM.DriverAccess.SafetyMonitor to get a SafetyMonitor object
-16:56:18.361 ConformanceCheck                  OK       Driver instance created successfully
+11:13:42.588 ConformanceCheck                  OK       Driver instance created successfully
  
 Pre-connect checks 
-16:56:18.413 IsSafe                            OK       Reports false before connection
+11:13:42.638 IsSafe                            OK       Reports false before connection
  
 Connect 
-16:56:18.465 ConformanceCheck                  OK       Connected OK
+11:13:42.693 ConformanceCheck                  OK       Connected OK
  
 Common Driver Methods 
-16:56:18.516 InterfaceVersion                  OK       1
-16:56:18.557 Connected                         OK       True
-16:56:18.603 Description                       OK       ASCOM SafetyMonitor Driver for TriStar Observatory
-16:56:18.651 DriverInfo                        OK       Driver Version: 2.0
-16:56:18.698 DriverVersion                     OK       2.0
-16:56:18.744 Name                              OK       TriStar Observatory Safety Monitor
-16:56:18.789 CommandString                     INFO     Conform cannot test the CommandString method
-16:56:18.795 CommandBlind                      INFO     Conform cannot test the CommandBlind method
-16:56:18.801 CommandBool                       INFO     Conform cannot test the CommandBool method
-16:56:18.806 Action                            INFO     Conform cannot test the Action method
-16:56:18.815 SupportedActions                  OK       Driver returned an empty action list
+11:13:42.745 InterfaceVersion                  OK       1
+11:13:42.783 Connected                         OK       True
+11:13:42.829 Description                       OK       TriStar Observatory SafetyMonitor
+11:13:42.875 DriverInfo                        OK       2.0.1.2
+11:13:42.921 DriverVersion                     OK       2.0.1.2
+11:13:42.969 Name                              OK       TriStar Observatory Safety Monitor
+11:13:43.014 CommandString                     INFO     Conform cannot test the CommandString method
+11:13:43.019 CommandBlind                      INFO     Conform cannot test the CommandBlind method
+11:13:43.024 CommandBool                       INFO     Conform cannot test the CommandBool method
+11:13:43.029 Action                            INFO     Conform cannot test the Action method
+11:13:43.038 SupportedActions                  OK       Driver returned an empty action list
  
 Properties 
-16:56:18.966 IsSafe                            OK       True
+11:13:43.191 IsSafe                            OK       True
  
 Conformance test complete 
  
 No errors, warnings or issues found: your driver passes ASCOM validation!! 
  
-Driver Hash Value: 5D09B1F6B040603E229540E2E57178E60F5E9992E4055E9142BF2BF5C154076FA56702577D905CA0FEE8CDE1C181C8E596E4D17D58D5B297C319339950F5D776
+Driver Hash Value: E60E0473BD0FA546F1C75C7D639F8125DC2D2DA25FFC211B02C2ABDF936305FCF0CE1BD59C299263F66DCEB2D0C7D6F15A2B001D44EAA6F4010BBF0539266066
