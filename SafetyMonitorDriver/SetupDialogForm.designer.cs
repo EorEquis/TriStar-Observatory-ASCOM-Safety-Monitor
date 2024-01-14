@@ -70,7 +70,7 @@ namespace ASCOM.TriStarObservatoryTSOSM.SafetyMonitor
             this.labelVer.Name = "labelVer";
             this.labelVer.Size = new System.Drawing.Size(123, 31);
             this.labelVer.TabIndex = 2;
-            this.labelVer.Text = "V 2.0.0.0";
+            this.labelVer.Text = "Set at run time";
             // 
             // picASCOM
             // 
@@ -130,7 +130,7 @@ namespace ASCOM.TriStarObservatoryTSOSM.SafetyMonitor
             this.Name = "SetupDialogForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "TriStarObservatoryTSOSM Setup";
+            this.Text = "TSO Safety Monitor Setup";
             this.Load += new System.EventHandler(this.SetupDialogForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picASCOM)).EndInit();
             this.ResumeLayout(false);

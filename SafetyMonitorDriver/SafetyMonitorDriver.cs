@@ -42,8 +42,8 @@ namespace ASCOM.TriStarObservatoryTSOSM.SafetyMonitor
     /// </summary>
     [ComVisible(true)]
     [Guid("2941660a-b9ad-4bd6-b4fb-b18676bb201f")]
-    [ProgId("ASCOM.TriStarObservatoryTSOSM.SafetyMonitor")]
-    [ServedClassName("TriStar Observatory SafetyMonitor")] // Driver description that appears in the Chooser, customise as required
+    [ProgId("ASCOM.TSO.SafetyMonitor")]
+    [ServedClassName("TriStar Observatory SafetyMonitor Driver")] // Driver description that appears in the Chooser, customise as required
     [ClassInterface(ClassInterfaceType.None)]
     public class SafetyMonitor : ReferenceCountedObjectBase, ISafetyMonitor, IDisposable
     {
